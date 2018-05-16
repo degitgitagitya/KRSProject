@@ -1,0 +1,11 @@
+C:\Users\De Gitgit Agitya\source\repos\JWTDemo\JWTDemo\bin\Release\netcoreapp2.0\JWTDemo.deps.json
+C:\Users\De Gitgit Agitya\source\repos\JWTDemo\JWTDemo\bin\Release\netcoreapp2.0\JWTDemo.runtimeconfig.json
+C:\Users\De Gitgit Agitya\source\repos\JWTDemo\JWTDemo\bin\Release\netcoreapp2.0\JWTDemo.runtimeconfig.dev.json
+C:\Users\De Gitgit Agitya\source\repos\JWTDemo\JWTDemo\bin\Release\netcoreapp2.0\JWTDemo.dll
+C:\Users\De Gitgit Agitya\source\repos\JWTDemo\JWTDemo\bin\Release\netcoreapp2.0\JWTDemo.pdb
+C:\Users\De Gitgit Agitya\source\repos\JWTDemo\JWTDemo\obj\Release\netcoreapp2.0\JWTDemo.csprojResolveAssemblyReference.cache
+C:\Users\De Gitgit Agitya\source\repos\JWTDemo\JWTDemo\obj\Release\netcoreapp2.0\JWTDemo.csproj.CoreCompileInputs.cache
+C:\Users\De Gitgit Agitya\source\repos\JWTDemo\JWTDemo\obj\Release\netcoreapp2.0\JWTDemo.AssemblyInfoInputs.cache
+C:\Users\De Gitgit Agitya\source\repos\JWTDemo\JWTDemo\obj\Release\netcoreapp2.0\JWTDemo.AssemblyInfo.cs
+C:\Users\De Gitgit Agitya\source\repos\JWTDemo\JWTDemo\obj\Release\netcoreapp2.0\JWTDemo.dll
+C:\Users\De Gitgit Agitya\source\repos\JWTDemo\JWTDemo\obj\Release\netcoreapp2.0\JWTDemo.pdb
