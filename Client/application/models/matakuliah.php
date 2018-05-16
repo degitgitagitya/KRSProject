@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: De Gitgit Agitya
  * Date: 5/16/2018
- * Time: 2:09 AM
+ * Time: 12:11 PM
  */
 
-class daftarJadwal extends CI_Model{
+class matakuliah extends CI_Model{
 
 	function __construct($foo = null)
 	{
 		parent::__construct();
-		$this->API = "http://localhost:50768/api/DaftarJadwal";
+		$this->API = "http://localhost:50768/api/Matkul";
 		$this->load->library('curl');
 		$this->options = array(
 			CURLOPT_RETURNTRANSFER => true,   // return web page
@@ -26,23 +26,9 @@ class daftarJadwal extends CI_Model{
 		);
 	}
 
-
-	function getAllJadwal()
+	function getAllMatkul()
 	{
 		$curl = curl_init($this->API."/GetAll");
-		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-				'Content-Type: application/json',
-				'Authorization: Bearer '. $this->session->userdata("token")
-			)
-		);
-		curl_setopt_array($curl, $this->options);
-
-		return json_decode(curl_exec($curl));
-	}
-
-	function getBy($id)
-	{
-		$curl = curl_init($this->API."/GetBy/".$id);
 		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
 				'Content-Type: application/json',
 				'Authorization: Bearer '. $this->session->userdata("token")

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JWTDemo.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWTDemo.Controllers
 {
     [Produces("application/json")]
+    [Authorize]
     [Route("api/Kelas")]
     public class KelasController : Controller
     {

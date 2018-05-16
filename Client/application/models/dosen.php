@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: De Gitgit Agitya
  * Date: 5/16/2018
- * Time: 2:09 AM
+ * Time: 12:16 PM
  */
 
-class jadwal extends CI_Model{
+class dosen extends CI_Model{
 
 	function __construct($foo = null)
 	{
 		parent::__construct();
-		$this->API = "http://localhost:50768/api/Jadwal";
+		$this->API = "http://localhost:50768/api/Dosen";
 		$this->load->library('curl');
 		$this->options = array(
 			CURLOPT_RETURNTRANSFER => true,   // return web page
@@ -24,6 +24,34 @@ class jadwal extends CI_Model{
 			CURLOPT_CONNECTTIMEOUT => 120,    // time-out on connect
 			CURLOPT_TIMEOUT        => 120,    // time-out on response
 		);
+	}
+
+	function getAllDosen()
+	{
+		$curl = curl_init($this->API."/GetAll");
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+				'Content-Type: application/json',
+				'Authorization: Bearer '. $this->session->userdata("token")
+			)
+		);
+		curl_setopt_array($curl, $this->options);
+
+
+
+		return json_decode(curl_exec($curl));
+	}
+
+	function getBy($id)
+	{
+		$curl = curl_init($this->API."/GetBy/".$id);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+				'Content-Type: application/json',
+				'Authorization: Bearer '. $this->session->userdata("token")
+			)
+		);
+		curl_setopt_array($curl, $this->options);
+
+		return json_decode(curl_exec($curl));
 	}
 
 	public function delete($id)
@@ -42,13 +70,11 @@ class jadwal extends CI_Model{
 		curl_close($ch);
 	}
 
-	public function add($hari, $waktu, $kode_kelas, $nama_matkul, $nama)
+	public function add($nip, $nama, $kode)
 	{
-		$data['hari'] = $hari;
-		$data['waktu'] = $waktu;
-		$data['id_kelas'] = $kode_kelas;
-		$data['id_matkul'] = $nama_matkul;
-		$data['id_dosen'] = $nama;
+		$data['nip'] = $nip;
+		$data['nama'] = $nama;
+		$data['kode_dosen'] = $kode;
 
 		$insert = json_encode($data);
 
@@ -72,14 +98,12 @@ class jadwal extends CI_Model{
 		$data['hasil'] =  json_decode($dt);
 	}
 
-	public function update($id, $hari, $waktu, $kode_kelas, $nama_matkul, $nama)
+	public function update($id, $nip, $nama, $kode)
 	{
 		$data['id'] = $id;
-		$data['hari'] = $hari;
-		$data['waktu'] = $waktu;
-		$data['id_kelas'] = $kode_kelas;
-		$data['id_matkul'] = $nama_matkul;
-		$data['id_dosen'] = $nama;
+		$data['nip'] = $nip;
+		$data['nama'] = $nama;
+		$data['kode_dosen'] = $kode;
 
 		$insert = json_encode($data);
 

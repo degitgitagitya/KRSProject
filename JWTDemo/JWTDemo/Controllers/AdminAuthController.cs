@@ -12,11 +12,10 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace JWTDemo.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/AdminAuth")]
+    [Route("api/[controller]")]
     public class AdminAuthController : Controller
     {
-        [HttpPost("token")]
+        [HttpPost("tokenAdmin")]
         public IActionResult Token()
         {
             var header = Request.Headers["Authorization"];
@@ -34,7 +33,7 @@ namespace JWTDemo.Controllers
                     if (usernameAndPass[0] == temp.Username && usernameAndPass[1] == temp.Password)
                     {
                         var claimsdata = new[] { new Claim(ClaimTypes.Name, temp.Username) };
-                        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("inisecretkeynyajadiharushatihati"));
+                        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("aowue92187183123nb1273131g9182"));
                         var signInCred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
                         var token = new JwtSecurityToken(
                             issuer: "mysite.com",

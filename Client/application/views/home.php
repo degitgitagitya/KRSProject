@@ -9,13 +9,16 @@
 $counter = 1;
 ?>
 
+<hr class="container">
+	<h1 class="text-center">Daftar Jadwal</h1>
+<hr class="container">
 
 <div class="container">
 
 
 	<div class="row mt-3">
 		<div class="col-2">
-			<a href="" class="btn btn-info">Tambahkan Jadwal</a>
+			<a href="<?php echo base_url('index.php/home/tambahkan')?>" class="btn btn-info">Tambahkan Jadwal</a>
 		</div>
 	</div>
 
@@ -44,7 +47,7 @@ $counter = 1;
 			<td>
 
 				<a href="<?php echo base_url() ?>index.php/home/deletejadwal/<?php echo $key->id?>" class="btn btn-warning">Hapus</a>
-				<a href="<?php echo base_url() ?>index.php/admin/editNews/<?php echo $key->id?>" class="btn btn-danger">Edit</a>
+				<a href="<?php echo base_url() ?>index.php/home/edit/<?php echo $key->id?>" class="btn btn-danger">Edit</a>
 
 			</td>
 		</tr>

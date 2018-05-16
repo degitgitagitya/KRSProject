@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JWTDemo.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWTDemo.Controllers
 {
+    [Authorize]
     [Produces("application/json")]
     [Route("api/Krs")]
     public class KrsController : Controller

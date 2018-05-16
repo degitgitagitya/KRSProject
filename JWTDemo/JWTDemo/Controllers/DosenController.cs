@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JWTDemo.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWTDemo.Controllers
 {
+    [Authorize]
     [Produces("application/json")]
     [Route("api/Dosen")]
     public class DosenController : Controller
@@ -61,8 +63,6 @@ namespace JWTDemo.Controllers
             DosenRepo dosen = new DosenRepo();
             var temp = dosen.insert(value);
             return Ok(temp);
-
-            
         }
         
         // PUT: api/Dosen/5

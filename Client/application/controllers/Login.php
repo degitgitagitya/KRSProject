@@ -32,7 +32,7 @@ class Login extends CI_Controller {
 	{
 		$login = $this->input->post('username');
 		$password = $this->input->post('password');
-		$url = 'http://localhost:50768/api/adminAuth/Token';
+		$url = 'http://localhost:50768/api/adminAuth/TokenAdmin';
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,$url);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -50,7 +50,7 @@ class Login extends CI_Controller {
 			'token' => $result
 		);
 
-		$check = substr($result,1,-1);
+		$check = $result;
 
 		$this->session->set_userdata($data_session);
 		if ($check == "Wrong Request")

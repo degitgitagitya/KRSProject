@@ -31,6 +31,16 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('header');
 		$this->load->view('navbar');
+		$this->load->view('start');
+		$this->load->view('footer');
+	}
+
+	public function jadwal()
+	{
+
+		$this->load->view('header');
+		$this->load->view('navbar');
+		$this->load->view('start');
 		$data['matkul'] = $this->daftarJadwal();
 		$this->load->view('home',$data);
 		$this->load->view('footer');
@@ -44,6 +54,54 @@ class Home extends CI_Controller {
 	public function deleteJadwal($id)
 	{
 		$this->jadwal->delete($id);
-		$this->index();
+		$this->jadwal();
+	}
+
+	public function tambahkan()
+	{
+		$this->load->view('header');
+		$this->load->view('navbar');
+		$data['kelas'] = $this->kelas->getAllKelas();
+		$data['matkul'] = $this->matakuliah->getAllMatkul();
+		$data['dosen'] = $this->dosen->getAllDosen();
+		$this->load->view('menambahkan',$data);
+		$this->load->view('footer');
+	}
+
+	public function addJadwal()
+	{
+		$hari = $this->input->post('hari');
+		$waktu = $this->input->post('waktu');
+		$kelas = $this->input->post('kelas');
+		$matkul = $this->input->post('matkul');
+		$dosen = $this->input->post('dosen');
+
+		$this->jadwal->add($hari, $waktu, $kelas, $matkul, $dosen);
+		$this->jadwal();
+	}
+
+	public function edit($id)
+	{
+		$this->load->view('header');
+		$this->load->view('navbar');
+		$data['tampungan'] = $this->daftarJadwal->getBy($id);
+		$data['kelas'] = $this->kelas->getAllKelas();
+		$data['matkul'] = $this->matakuliah->getAllMatkul();
+		$data['dosen'] = $this->dosen->getAllDosen();
+		$this->load->view('mengedit',$data);
+		$this->load->view('footer');
+	}
+
+	public function editJadwal()
+	{
+		$id = $this->input->post('id');
+		$hari = $this->input->post('hari');
+		$waktu = $this->input->post('waktu');
+		$kelas = $this->input->post('kelas');
+		$matkul = $this->input->post('matkul');
+		$dosen = $this->input->post('dosen');
+
+		$this->jadwal->update($id, $hari, $waktu, $kelas, $matkul, $dosen);
+		$this->jadwal();
 	}
 }
