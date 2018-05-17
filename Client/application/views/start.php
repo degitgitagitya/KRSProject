@@ -23,7 +23,7 @@
 			<a href="<?php echo base_url('index.php/kelas_c')?>" class="btn btn-success">Kelas</a>
 		</div>
 		<div class="col-3 text-center">
-			<a href="" class="btn btn-success">Mata Kuliah</a>
+			<a href="<?php echo base_url('index.php/matkul_c')?>" class="btn btn-success">Mata Kuliah</a>
 		</div>
 	</div>
 </div>

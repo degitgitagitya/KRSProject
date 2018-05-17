@@ -7,6 +7,11 @@
  */
 
 $counter = 1;
+
+if (!isset($kelas))
+{
+	redirect(base_url());
+}
 ?>
 
 <hr class="container">

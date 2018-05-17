@@ -7,6 +7,11 @@
  */
 
 $counter = 1;
+
+if (!isset($dosen))
+{
+	redirect(base_url());
+}
 ?>
 
 <hr class="container">

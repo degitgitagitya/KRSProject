@@ -7,6 +7,14 @@
  */
 
 $counter = 1;
+
+if (!isset($matkul))
+{
+	redirect(base_url());
+}
+
+asort($matkul);
+
 ?>
 
 <hr class="container">

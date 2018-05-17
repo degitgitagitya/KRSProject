@@ -38,4 +38,90 @@ class matakuliah extends CI_Model{
 
 		return json_decode(curl_exec($curl));
 	}
+
+	function getBy($id)
+	{
+		$curl = curl_init($this->API."/GetBy/".$id);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+				'Content-Type: application/json',
+				'Authorization: Bearer '. $this->session->userdata("token")
+			)
+		);
+		curl_setopt_array($curl, $this->options);
+
+		return json_decode(curl_exec($curl));
+	}
+
+	public function delete($id)
+	{
+		$url = $this->API."/Delete/".$id;
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+				'Content-Type: application/json',
+				'Authorization: Bearer '. $this->session->userdata("token")
+			)
+		);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+		$result = curl_exec($ch);
+		$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close($ch);
+	}
+
+	public function add($kode, $nama, $sks)
+	{
+		$data['kd_matkul'] = $kode;
+		$data['nama_matkul'] = $nama;
+		$data['sks'] = $sks;
+
+		$insert = json_encode($data);
+
+		$curl = curl_init($this->API."/Insert");
+		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+				'Content-Type: application/json',
+				'Content-Length: ' . strlen($insert),
+				'Authorization: Bearer '. $this->session->userdata("token")
+			)
+		);
+
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $insert);
+
+		$result = curl_exec($curl);
+		curl_close($curl);
+
+		$dt = $result;
+		$data['hasil'] =  json_decode($dt);
+	}
+
+	public function update($id, $kode, $nama, $sks)
+	{
+		$data['id'] = $id;
+		$data['kd_matkul'] = $kode;
+		$data['nama_matkul'] = $nama;
+		$data['sks'] = $sks;
+
+		$insert = json_encode($data);
+
+		$curl = curl_init($this->API."/Update");
+		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+				'Content-Type: application/json',
+				'Content-Length: ' . strlen($insert),
+				'Authorization: Bearer '. $this->session->userdata("token")
+			)
+		);
+
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $insert);
+
+		$result = curl_exec($curl);
+		curl_close($curl);
+
+		$dt = $result;
+		$data['hasil'] =  json_decode($dt);
+	}
 }
