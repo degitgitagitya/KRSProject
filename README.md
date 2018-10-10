@@ -1,2 +1,2 @@
 # KRSProject
-This is my School Project
+REST API C# with Client
